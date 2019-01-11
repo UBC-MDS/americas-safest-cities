@@ -57,4 +57,4 @@ Tab 1: Interactive map to explore violent crime statisitics in America
 
 ![](img/02-chart.PNG "Line chart")
 
-Tab2: Line chart to compare violent crime trend in selected cities
+Tab 2: Line chart to compare violent crime trend in selected cities
