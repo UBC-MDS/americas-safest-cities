@@ -1,2 +1,2 @@
-# americas-safest-cities
-Shiny App to explore and compare America's safest cities.
+# America's Safest Cities
+#### Shiny App to explore and compare America's safest cities.
