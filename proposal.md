@@ -51,6 +51,10 @@ The first tab is an interactive map with filtering criterion that displays major
 
 The second tab contains comparison line charts for selected timespan, violent crime category and cities. The data compared will be the rate over 100,000 population. The timespan option allows varying the start year while the end year remains 2015. This makes the analysis simpler allowing the user to compare the trend of crime going 2, 5, 10, 20 or 40 years back. The default selection will be 5 years. Similar to the interactive map, the violent crime category drop down allows viewing data for homicide, rape, robbery, aggravated assault or all categories combined. The default will be all categories combined. The user can pick the cities of their choice in the selected cities drop down menus to compare.
 
-![map](img/01-map.png)
+![](img/01-map.PNG "Interactive map")
 
-![chart](img/02-chart.png)
+Tab 1: Interactive map to explore violent crime statisitics in America
+
+![](img/02-chart.PNG "Line chart")
+
+Tab2: Line chart to compare violent crime trend in selected cities
