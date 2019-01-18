@@ -46,7 +46,6 @@ ui <- fluidPage(
                                      choices = c(1975:2015), selected = 2015),
                          selectInput("crimeInput", "Type of Violent crime",
                                      choices = c("All","Homicide", "Rape","Robbery","Aggravated Assault"))
-                         #,radioButtons("radioInput", "", choices = c("Numbers", "Rates"))
                          
                      ),
                      mainPanel(
@@ -67,16 +66,11 @@ ui <- fluidPage(
                                          choices = c(2,5,10,20,40), selected = 5),
                              selectInput("crimeTrendInput", "Type of Violent crime",
                                          choices = c("All","Homicide", "Rape","Robbery","Aggravated Assault")),
-                             selectInput("city1Input", "Selected Cities",
-                                         choices = data$city),
-                             selectInput("city2Input", "",
-                                         choices = data$city),
-                             selectInput("city3Input", "",
-                                         choices = data$city),
-                             selectInput("city4Input", "",
-                                         choices = data$city),
-                             selectInput("city5Input", "",
-                                         choices = data$city)
+                             selectInput("city1Input", "Selected Cities", choices = data$city),
+                             selectInput("city2Input", "", choices = data$city),
+                             selectInput("city3Input", "", choices = data$city),
+                             selectInput("city4Input", "", choices = data$city),
+                             selectInput("city5Input", "", choices = data$city)
                          ),
 
                          # Show a plot of the generated distribution
@@ -127,20 +121,18 @@ server <- function(input, output) {
     })
     
     output$trendPlot <- renderPlot({
-
+        
         selected_cities <- c(input$city1Input, input$city2Input, input$city3Input,
                              input$city4Input, input$city5Input)
-        duration <- as.numeric(input$durationInput)
 
         data %>%
             arrange(year) %>%
             group_by(crime_type) %>%
-            filter(city == selected_cities,
-                   year >= (2015-duration),
+            filter(city == append(selected_cities,"National"),
+                   year >= (2015-as.numeric(input$durationInput)),
                    crime_type == input$crimeTrendInput) %>%
             ggplot(aes(x = year, y = Rates, colour = city)) +
             geom_line(size = 2)
-
     })
 }
 
