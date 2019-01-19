@@ -40,11 +40,11 @@ For this milestone, the tasks were roughly the following:
 
 ## Screenshots
 
-![](img/03-map.PNG "Interactive map")
+![](img/03-map.png "Interactive map")
 
 Tab 1: Interactive map to explore violent crime statisitics in America
 
-![](img/04-chart.PNG "Line chart")
+![](img/04-chart.png "Line chart")
 
 Tab 2: Line chart to compare violent crime trend in selected cities
 
