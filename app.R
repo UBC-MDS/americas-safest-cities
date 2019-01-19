@@ -7,11 +7,12 @@ library(shiny)
 library(tidyverse)
 library(leaflet)
 library(shinythemes)
+theme_set(theme_light())
 
 crime <- tibble(crime_numbers = c("violent_crime","homs_sum","rape_sum","rob_sum","agg_ass_sum"),
                 crime_type = c("All","Homicide","Rape","Robbery","Aggravated Assault"))
 
-raw_data <- read_csv('data/data_clean.csv')
+raw_data <- read_csv('data/data_cleaned.csv')
 
 data <- raw_data %>% 
     gather(crime_numbers, Numbers, 7:11) %>% 
@@ -66,11 +67,11 @@ ui <- fluidPage(
                                          choices = c(2,5,10,20,40), selected = 5),
                              selectInput("crimeTrendInput", "Type of Violent crime",
                                          choices = c("All","Homicide", "Rape","Robbery","Aggravated Assault")),
-                             selectInput("city1Input", "Selected Cities", choices = data$city),
-                             selectInput("city2Input", "", choices = data$city),
-                             selectInput("city3Input", "", choices = data$city),
-                             selectInput("city4Input", "", choices = data$city),
-                             selectInput("city5Input", "", choices = data$city)
+                             selectInput("city1Input", "Selected Cities", choices = data$city, selected = data$city[1]),
+                             selectInput("city2Input", "", choices = data$city, selected = data$city[2]),
+                             selectInput("city3Input", "", choices = data$city, selected = data$city[3]),
+                             selectInput("city4Input", "", choices = data$city, selected = data$city[4]),
+                             selectInput("city5Input", "", choices = data$city, selected = data$city[5])
                          ),
 
                          # Show a plot of the generated distribution
@@ -128,11 +129,18 @@ server <- function(input, output) {
         data %>%
             arrange(year) %>%
             group_by(crime_type) %>%
-            filter(city == append(selected_cities,"National"),
+            filter(city == selected_cities,
                    year >= (2015-as.numeric(input$durationInput)),
                    crime_type == input$crimeTrendInput) %>%
             ggplot(aes(x = year, y = Rates, colour = city)) +
-            geom_line(size = 2)
+            geom_line(size = 2) + 
+            labs(
+                title = 'Comparison of Violent Crime in Selected Cities',
+                subtitle = '',
+                x = 'Years',
+                y = 'Crime per 100k Population',
+                legend = 'Cities'
+            )
     })
 }
 

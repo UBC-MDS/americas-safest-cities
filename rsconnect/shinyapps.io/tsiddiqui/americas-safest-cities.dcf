@@ -1,0 +1,13 @@
+name: americas-safest-cities
+title: americas-safest-cities
+username:
+account: tsiddiqui
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 655894
+bundleId: 1824507
+url: https://tsiddiqui.shinyapps.io/americas-safest-cities/
+when: 1547932326.8725
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: milestone2_writeup.md|proposal.md|data/1000-largest-us-cities-by-population-with-geographic-coordinates.csv|data/ucr_crime_1975_2015.csv|img/01-map.PNG|img/02-chart.PNG|img/03-map.png|img/04-chart.png|src/data_wrangling.R
