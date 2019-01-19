@@ -38,6 +38,16 @@ For this milestone, the tasks were roughly the following:
 - Choose good colours
 - Implement fixed edge feature on x-axis
 
+## Screenshots
+
+![](img/03-map.png "Interactive map")
+
+Tab 1: Interactive map to explore violent crime statisitics in America
+
+![](img/04-chart.png "Line chart")
+
+Tab 2: Line chart to compare violent crime trend in selected cities
+
 ## Bugs
 
 Some of the bugs that were encountered along the way were some issues aggregating the data using the R script that caused some of the cities to go missing. Also, for the line graph, some of the cities were not getting scaled and/or represented properly. This way an issue that may have been caused by the presence of some NA’s in the data set. The data cleaning script was implemented to remove all the NA’s in the set and assisted with this problem, but may likely have caused missing data in the time series.

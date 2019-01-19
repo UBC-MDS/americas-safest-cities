@@ -1,13 +1,13 @@
 library(dplyr)
 library(tidyverse)
 
-crime <- read.csv("americas-safest-cities/data/ucr_crime_1975_2015.csv")
-latlon <- read.csv("americas-safest-cities/data/1000-largest-us-cities-by-population-with-geographic-coordinates.csv",sep=";")
+crime <- read.csv("ucr_crime_1975_2015.csv")
+latlon <- read.csv("1000-largest-us-cities-by-population-with-geographic-coordinates.csv",sep=";")
 
 #Clean city names and select important columns
 crime_clean <- crime %>%
   separate(col=department_name,into=c("city","state"),sep=",") %>%
-  select(ORI,year,city,population = total_pop,homs_sum,rape_sum,rob_sum,agg_ass_sum,violent_crime)%>%
+  select(ORI,year,city,total_pop,homs_sum,rape_sum,rob_sum,agg_ass_sum,violent_crime)%>%
     na.omit()
 
 crime_clean$city[crime_clean$city=="New York City"] <- "New York"
@@ -23,10 +23,10 @@ city_merged <- crime_clean %>%
   left_join(latlon,by="city") %>%
   na.omit() %>%
   separate(col=Coordinates,into=c("lat","long"),sep=", ") %>%
-  select(year,city,state,population,homs_sum,rape_sum,agg_ass_sum,rob_sum,total_crime,lat,long)
+  select(year,city,state,lat,long,total_pop,violent_crime,homs_sum,rape_sum,rob_sum,agg_ass_sum)
 
 #To write
-#write_csv(city_merged,"results/data_cleaned.csv")
+write_csv(city_merged,"data_cleaned.csv")
 
 #To check
 #my_table <- city_merged %>%
