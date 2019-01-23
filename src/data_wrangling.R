@@ -8,7 +8,7 @@ latlon <- read.csv("1000-largest-us-cities-by-population-with-geographic-coordin
 crime_clean <- crime %>%
   separate(col=department_name,into=c("city","state"),sep=",") %>%
   select(ORI,year,city,total_pop,homs_sum,rape_sum,rob_sum,agg_ass_sum,violent_crime)%>%
-    na.omit()
+  na.omit()
 
 crime_clean$city[crime_clean$city=="New York City"] <- "New York"
 
