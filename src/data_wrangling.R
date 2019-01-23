@@ -6,16 +6,17 @@ latlon <- read.csv("1000-largest-us-cities-by-population-with-geographic-coordin
 
 #Clean city names and select important columns
 crime_clean <- crime %>%
+  filter(department_name != "National") %>% 
   separate(col=department_name,into=c("city","state"),sep=",") %>%
-  select(ORI,year,city,total_pop,homs_sum,rape_sum,rob_sum,agg_ass_sum,violent_crime)%>%
-    na.omit()
+  select(ORI,year,city,total_pop,homs_sum,rape_sum,rob_sum,agg_ass_sum,violent_crime) %>%
+  replace(is.na(.), 0)
 
 crime_clean$city[crime_clean$city=="New York City"] <- "New York"
 
 #Cleaning the coordinate/state dataframe
 latlon <- latlon %>%
   select(City,State,Coordinates,Population) %>%
-  filter(Population > 300000) %>%
+  filter(Population > 190000) %>%
   select(city=City,state=State,Coordinates)
 
 #Left Joining the coordinates table to the crime dataframe and cleaning
