@@ -7,6 +7,7 @@ library(shiny)
 library(tidyverse)
 library(leaflet)
 library(shinythemes)
+library(plotly)
 theme_set(theme_light())
 
 crime <- tibble(crime_numbers = c("violent_crime","homs_sum","rape_sum","rob_sum","agg_ass_sum"),
@@ -126,7 +127,8 @@ server <- function(input, output) {
         selected_cities <- c(input$city1Input, input$city2Input, input$city3Input,
                              input$city4Input, input$city5Input)
 
-        data %>%
+        #plotly(
+            data %>%
             arrange(year) %>%
             group_by(crime_type) %>%
             filter(city == selected_cities,
@@ -141,6 +143,8 @@ server <- function(input, output) {
                 y = 'Crime per 100k Population',
                 legend = 'Cities'
             )
+        #)
+        
     })
 }
 
