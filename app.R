@@ -88,7 +88,7 @@ ui <- fluidPage(
 
                          # Show a plot of the generated distribution
                          mainPanel(
-                             plotOutput("trendPlot")
+                             plotlyOutput("trendPlot")
                          )
                      )
                  )
@@ -155,29 +155,23 @@ axis.ticks.x = element_blank(),axis.ticks.y = element_blank(),axis.title.y=eleme
         
     },height = 250,width = "auto")
     
-    output$trendPlot <- renderPlot({
+    output$trendPlot <- renderPlotly({
         
-        #selected_cities <- c(input$city1Input, input$city2Input, input$city3Input,
-        #                     input$city4Input, input$city5Input)
-
-        #plotly(
-            data %>%
+        p <- data %>%
             arrange(year) %>%
             group_by(crime_type) %>%
             filter(city == input$cityInput,
                    year >= (2015-as.numeric(input$durationInput)),
-                   crime_type == input$crimeTrendInput) %>%
-            ggplot(aes(x = year, y = Rates, colour = city)) +
-            geom_line(size = 2) + 
+                   crime_type == input$crimeTrendInput) %>% 
+          ggplot(aes(x = year, y = Rates, colour = city)) +
+            geom_path() +
             labs(
                 title = 'Comparison of Violent Crime in Selected Cities',
-                subtitle = '',
                 x = 'Years',
                 y = 'Crime per 100k Population',
                 legend = 'Cities'
             )
-        #)
-        
+        ggplotly(p, tooltip = c('label', 'x', 'y', 'colour'))
     })
 }
 
