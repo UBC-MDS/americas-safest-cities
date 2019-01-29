@@ -1,10 +1,16 @@
-# America's Most Dangerous Cities
-Shiny App to explore and compare America's most dangerous cities.
+<img src="img/handcuffs.png" align="right" height="100" width="150"/>
 
-| Group Member | @github |
-|--|--|
-|Mohamad Makkaoui|@makka3|
-|Talha S|@talhaadnan100|
+# How Safe is America?
+Shiny App to explore and compare exactly how safe is America.
+
+| Deployed App |
+|--------------|
+|[How Safe is America?](https://tsiddiqui.shinyapps.io/americas-safest-cities/)|
+
+| Contributors |
+|--------------|
+|[Mohamad Makkaoui](github.com/makka3)|
+|[Talha Siddiqui](github.com/talhaadnan100)|
 
 ### Recent Updates
 
@@ -13,6 +19,8 @@ Milestone 1 [proposal](/proposal.md) for the App
 Milestone 2 [write-up](/milestone2_writeup.md) for the App
 
 Milestone 3 [write-up](/milestone3_writeup.md) for the App
+
+Milestone 4 [write-up](/milestone4_writeup.md) for the App
 
 | Group | Feedback Provided |
 |--|--|

@@ -5,9 +5,9 @@ account: tsiddiqui
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 655894
-bundleId: 1838899
+bundleId: 1844452
 url: https://tsiddiqui.shinyapps.io/americas-safest-cities/
-when: 1548540685.95079
+when: 1548796423.31199
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: milestone2_writeup.md|milestone3_writeup.md|proposal.md|data/1000-largest-us-cities-by-population-with-geographic-coordinates.csv|data/ucr_crime_1975_2015.csv|img/01-map.PNG|img/02-chart.PNG|img/03-map.png|img/04-chart.png|src/data_wrangling.R
